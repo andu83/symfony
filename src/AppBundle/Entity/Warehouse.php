@@ -62,7 +62,7 @@ class Warehouse
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,6 +73,7 @@ class Warehouse
      * Set name
      *
      * @param string $name
+     *
      * @return Warehouse
      */
     public function setName($name)
@@ -85,7 +86,7 @@ class Warehouse
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -96,6 +97,7 @@ class Warehouse
      * Set address
      *
      * @param string $address
+     *
      * @return Warehouse
      */
     public function setAddress($address)
@@ -108,7 +110,7 @@ class Warehouse
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -119,6 +121,7 @@ class Warehouse
      * Add product
      *
      * @param \AppBundle\Entity\Product $product
+     *
      * @return Warehouse
      */
     public function addProduct(\AppBundle\Entity\Product $product)
@@ -141,10 +144,16 @@ class Warehouse
     /**
      * Get product
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProduct()
     {
         return $this->product;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }

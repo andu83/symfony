@@ -30,7 +30,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    form_themes:
+      - 'AppBundle:Form:fields.html.twig'
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -51,3 +52,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+
+

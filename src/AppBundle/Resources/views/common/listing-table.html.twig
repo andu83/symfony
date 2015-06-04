@@ -1,0 +1,5 @@
+<table>
+    <tr>        {% for column in model %}
+            <th> {{ column.title }} </th>            {% endfor %}    </tr>    {% for item in data %}
+        <tr>            {% for column in item %}
+                <td>                    {{ column }}                </td>            {% endfor %}        </tr>    {% endfor %} </table>

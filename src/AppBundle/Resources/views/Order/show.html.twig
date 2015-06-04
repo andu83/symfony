@@ -1,33 +1,30 @@
-    {% extends 'common/app.html.twig' %}
-
-    {% block header%}
-    <h1>Order</h1>
-    {% endblock %}
-
-    {% block content%}
-
+{% extends 'common/app.html.twig' %} 
+{% block header %}    <h1>Order</h1> {% endblock %} 
+{% block content %}
     <table class="record_properties">
-        <tbody>            <tr>
-                <th>Id</th>                <td>
-                    {{ entity.id }}
-                </td>            </tr>            <tr>
-                <th>Status</th>                <td>
-                    {{ entity.status }}
-                </td>            </tr>            <tr>
-                <th>Createdate</th>                <td>{{ entity.createDate|date('Y-m-d H:i:s') }}</td>            </tr>        </tbody>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>                    {{ entity.id }}                </td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>                    {{ entity.status }}                </td>
+        </tr>
+        <tr>
+            <th>Createdate</th>
+            <td>{{ entity.createDate|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Products</th>
+            <td>                    {{ include('AppBundle:OrderProductLine:listing-table.html.twig',                        {'productLines': entity.productLines}                    ) }}                </td>
+        </tr>
+        </tbody>
     </table>
+    <div class="record-actions"><a class="button" href="{{ path('order') }}"> Back to the list </a> <a class="button"
+                                                                                                       href="{{ path('order_edit',            { 'id': entity.id }) }}">
+            Edit </a>
 
-        <div class="record-actions">
-    <a class="button" href="{{ path('order') }}">
-        Back to the list
-    </a>
-            <a class="button" href="{{ path('order_edit', 
-            { 'id': entity.id }) }}">
-            Edit
-        </a>
-                <div style="float:left">
-        {{ form(delete_form) }}
-        </div>
+        <div style="float:left">            {{ form(delete_form) }}        </div>
         <div style="clear:both"></div>
-    </div>
-    {% endblock %}
+    </div> {% endblock %}

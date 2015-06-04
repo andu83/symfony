@@ -1,34 +1,24 @@
-    {% extends 'common/app.html.twig' %}
-
-    {% block header%}
-    <h1>Order list</h1>
-    {% endblock %}
-
-    {% block content%}
+{% extends 'common/app.html.twig' %} 
+{% block header %}    <h1>Order list</h1> {% endblock %}
+{% block content %}
     <table class="records_list">
         <thead>
-            <tr>                <th>Id</th>                <th>Status</th>                <th>Createdate</th>                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Status</th>
+            <th>Createdate</th>
+            <th>Actions</th>
+        </tr>
         </thead>
-        <tbody>
-            {% for entity in entities %}
-            <tr>                <td>
-                    <a href="{{ path('order_show', { 'id': entity.id }) }}">
-                        {{ entity.id }}
-                    </a>
-                </td>                <td>{{ entity.status }}</td>                <td>{% if entity.createDate %}
-                            {{ entity.createDate|date('Y-m-d H:i:s') }}
-                        {% endif %}</td>                <td><div class="actions">    <a class="button" href="{{ path('order_show', { 'id': entity.id }) }}">
-        show
-    </a>    <a class="button" href="{{ path('order_edit', { 'id': entity.id }) }}">
-        edit
-    </a></div>
-                </td>            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-            <a class="button" href="{{ path('order_new') }}">
-            New Order
-        </a>
-        {% endblock %}
+        <tbody>            {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('order_show', { 'id':entity.id }) }}">                        {{ entity.id }}                    </a></td>
+                <td>                    {{ ('order.status.' ~ entity.status)|trans }}                  </td>
+                <td>                    {% if entity.createDate %}                      {{ entity.createDate|date('Y-m-d H:i:s') }}                    {% endif %}                  </td>
+                <td>
+                    <div class="actions"><a class="button" href="{{ path('order_show', { 'id': entity.id }) }}"> show </a> <a class="button"
+                                                                                                                              href="{{ path('order_edit', { 'id': entity.id }) }}">
+                            edit </a></div>
+                </td>
+            </tr>            {% endfor %}        </tbody>
+    </table>    <a class="button" href="{{ path('order_new') }}"> New Order </a> {% endblock %}

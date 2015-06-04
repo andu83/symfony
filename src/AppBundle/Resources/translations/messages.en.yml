@@ -1,0 +1,6 @@
+order:
+  status:
+    1: new
+    10: processing
+    20: delivered
+    30: cancelled

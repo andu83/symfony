@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Customer
 {
+    const REPOSITORY = 'AppBundle:Customer';
     /**
      * @var integer
      *

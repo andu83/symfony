@@ -1,0 +1,4 @@
+{% set rows = [] %}
+{% for productLine in productLines %}    {% set row = {        'code': productLine.productSale.product.code,        'title': productLine.productSale.product.title,        'price': productLine.productSale.price,        'quantity': productLine.quantity,    } %}    {% set rows = rows|merge({(loop.index0): row}) %} {% endfor %}
+{{ include('AppBundle:common:listing-table.html.twig',    {        model: [            {'title': 'code'},            {'title': 'title'},            {'title': 'price'},            {'title': 'quantity'}        ],        data: rows    }
+) }}

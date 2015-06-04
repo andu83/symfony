@@ -8,6 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\ProductSale;
 use AppBundle\Form\ProductSaleType;
 
+use AppBundle\Entity\Product;
+use Doctrine\ORM\Query\Expr\Join;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+
 /**
  * ProductSale controller.
  *
@@ -25,10 +30,14 @@ class ProductSaleController extends Controller
 
         $entities = $em->getRepository('AppBundle:ProductSale')->findAll();
 
-        return $this->render('AppBundle:ProductSale:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:index.html.twig',
+            array(
+                'entities' => $entities,
+            )
+        );
     }
+
     /**
      * Creates a new ProductSale entity.
      *
@@ -36,7 +45,7 @@ class ProductSaleController extends Controller
     public function createAction(Request $request)
     {
         $entity = new ProductSale();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -47,10 +56,13 @@ class ProductSaleController extends Controller
             return $this->redirect($this->generateUrl('productsale_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AppBundle:ProductSale:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -62,10 +74,14 @@ class ProductSaleController extends Controller
      */
     private function createCreateForm(ProductSale $entity)
     {
-        $form = $this->createForm(new ProductSaleType(), $entity, array(
-            'action' => $this->generateUrl('productsale_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new ProductSaleType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('productsale_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -81,10 +97,13 @@ class ProductSaleController extends Controller
         $entity = new ProductSale();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AppBundle:ProductSale:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -103,10 +122,13 @@ class ProductSaleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:ProductSale:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:show.html.twig',
+            array(
+                'entity'      => $entity,
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -123,34 +145,42 @@ class ProductSaleController extends Controller
             throw $this->createNotFoundException('Unable to find ProductSale entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AppBundle:ProductSale:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:edit.html.twig',
+            array(
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to edit a ProductSale entity.
-    *
-    * @param ProductSale $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a ProductSale entity.
+     *
+     * @param ProductSale $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(ProductSale $entity)
     {
-        $form = $this->createForm(new ProductSaleType(), $entity, array(
-            'action' => $this->generateUrl('productsale_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new ProductSaleType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('productsale_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
+
     /**
      * Edits an existing ProductSale entity.
      *
@@ -166,7 +196,7 @@ class ProductSaleController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -175,12 +205,16 @@ class ProductSaleController extends Controller
             return $this->redirect($this->generateUrl('productsale_edit', array('id' => $id)));
         }
 
-        return $this->render('AppBundle:ProductSale:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'AppBundle:ProductSale:edit.html.twig',
+            array(
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
+
     /**
      * Deletes a ProductSale entity.
      *
@@ -191,7 +225,7 @@ class ProductSaleController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em     = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('AppBundle:ProductSale')->find($id);
 
             if (!$entity) {
@@ -218,7 +252,31 @@ class ProductSaleController extends Controller
             ->setAction($this->generateUrl('productsale_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    public function searchByCodeAction(Request $request)
+    {
+        $code          = $request->get('term');
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository    = $entityManager->getRepository(ProductSale::REPOSITORY);
+        $queryBuilder  = $repository->createQueryBuilder('productSale');
+        $products      = $queryBuilder->select('productSale')->where('product.code like :code')->andWhere('productSale.active=1')->innerJoin(
+            Product::REPOSITORY,
+            'product',
+            Join::WITH,
+            $queryBuilder->expr()->eq('product', 'productSale.product')
+        )->setParameter('code', "$code%")->getQuery()->getResult();
+        $response      = array();
+        foreach ($products as $productSale) {
+            $response[] = array(
+                'id'    => $productSale->getId(),
+                'code'  => $productSale->getProduct()->getCode(),
+                'title' => $productSale->getProduct()->getTitle(),
+                'price' => $productSale->getPrice(),
+            );
+        }
+
+        return new JsonResponse($response);
     }
 }

@@ -1,0 +1,14 @@
+{% block appbundle_orderproductline_embeddable_widget %}    {% set rows = [] %}    {% if (value is not null) %}        {% for productLine in value.owner.productLines %}            {% set row = {                'code': productLine.productSale.product.code,                'title': productLine.productSale.product.title,                'price': productLine.productSale.price,                'quantity': productLine.quantity,            } %}            {% set rows = rows|merge({(loop.index0): row}) %}        {% endfor %}    {% endif %}
+    <div {{ block('widget_container_attributes') }}        class="ui-widget-content embeddable-form" data-source="{{ path(route) }}"
+                                                           data-name="{{ full_name }}" data-rows="{{ rows|json_encode() }}">
+        <div class="ui-widget-header">            {{ title }}        </div>
+        search <input type="text" class="search-input" placeholder="{{ search }}"/>
+        <table class="data">
+            <tr>
+                <th></th>                    {% for column in columns %}
+                    <th> {{ column }} </th>                    {% endfor %}
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/embeddable-form.js') }}"></script> {% endblock %}
