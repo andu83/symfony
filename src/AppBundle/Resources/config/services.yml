@@ -12,6 +12,8 @@ services:
     tags:
       - {name: json_rpc.service, method: getAll}
       - {name: json_rpc.service, method: getOne}
+  warehouse:
+    alias: app.warehouse
   app.catalog:
     class: AppBundle\Service\CatalogService
     parent: app.doctrine_aware
@@ -20,4 +22,11 @@ services:
     parent: app.doctrine_aware
     tags:
       - {name: json_rpc.service, method: createOrder}
-      - {name: json_rpc.service, method: getOne}
+      #- {name: json_rpc.service, method: getOne}
+  order:
+    alias: app.order
+  app.email:
+    class: AppBundle\Service\EmailService
+    calls: #The following should be on one line, I split it here for readability
+      - ["addProvider", ["@=service('kernel').getEnvironment() === 'dev' ? service('app.provider_email_dev') : service('app.provider_email_php')"]]
+

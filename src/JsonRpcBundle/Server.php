@@ -37,7 +37,7 @@ class Server extends ContainerAware
      */
     private function isAllowed($serviceId, $method)
     {
-        return in_array(sprintf('%s->%s', $serviceId, $method), $this->allowedMethods);
+        return array_key_exists($serviceId, $this->allowedMethods) && in_array($method, $this->allowedMethods[$serviceId]);
     }
 
     private function resolveOptions($request)
@@ -53,7 +53,10 @@ class Server extends ContainerAware
 
     public function addAllowedMethod($serviceId, $method)
     {
-        $this->allowedMethods[] = sprintf('%s->%s', $serviceId, $method);
+        if (empty($this->allowedMethods[$serviceId])) {
+            $this->allowedMethods[$serviceId] = array();
+        }
+        $this->allowedMethods[$serviceId][] = $method;
     }
 
 }

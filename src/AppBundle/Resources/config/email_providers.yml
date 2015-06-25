@@ -1,0 +1,6 @@
+services:
+    app.provider_email_php:
+        class: AppBundle\Communication\Email\PhpProvider
+
+    app.provider_email_dev:
+        class: AppBundle\Communication\Email\DevProvider
