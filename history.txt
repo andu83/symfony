@@ -1,0 +1,229 @@
+    1  ip a
+    2  sudo smbpasswd -a ubuntu
+    3  l
+    4  nano /etc/samba/smb.conf
+    5  sudo nano /etc/samba/smb.conf
+    6  sudo service smbd restart
+    7  testparm
+    8  ip a
+    9  sudo nano /etc/samba/smb.conf
+   10  sudo service smbd restart
+   11  sudo nano /etc/samba/smb.conf
+   12  tail -f /var/log/samba/log.172.24.195.98
+   13  cd /var/log/samba/
+   14  l
+   15  ll
+   16  tail -f log.smbd
+   17  tail -f log.0814it0025
+   18  lll
+   19  ll
+   20  tail -f log.ilyes-pc
+   21  l /var/lib/samba/usershares/ubuntu
+   22  l /var/lib/samba/usershares/
+   23  cd /var/lib/samba/usershares/
+   24  ll
+   25  l ubuntu
+   26  tail -f log.ilyes-pc
+   27  tail /var/log/samba/log.ilyes-pc 
+   28  tail -f  /var/log/samba/log.ilyes-pc 
+   29  ls -la
+   30  cd work
+   31  ls -la
+   32  cd symfony-tutorial/p1/
+   33  app/console | grep route
+   34  app/console router:debug
+   35  git st
+   36  ls -la
+   37  git init
+   38  git st
+   39  git remote show 
+   40  git st
+   41  composer update
+   42  git st
+   43  composer config github-oauth.github.com da4c4f234ec537c59b8252acac2718108c4b8845
+   44  history
+   45  ls -la
+   46  cd work/symfony-tutorial/p1/
+   47  app/console | server
+   48  app/console | grep server
+   49  app/console server:run 
+   50  app/console server:run 172.24.193.180
+   51  app/console server:run 172.24.193.180:8000
+   52  cd work/symfony-tutorial/c3/
+   53  app/console server:run 172.24.193.180:8000
+   54  ls -la
+   55  cd work/
+   56  cd symfony-tutorial/
+   57  ls -la
+   58  cd p1/
+   59  ls -la
+   60  ip a
+   61  cd ../
+   62  mkdir c3
+   63  cd c3
+   64  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch2
+   65  ls -al ~/.ssh
+   66  ssh-keygen -t rsa -b 4096 -C "vasilasalexandru@yahoo.com"
+   67  cat /home/ubuntu/.ssh/id_rsa.pub 
+   68  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch2
+   69  git st
+   70  ls -la
+   71  rm -rf symfony-tutorial
+   72  ls -la
+   73  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch2 .
+   74  ls -la
+   75  git st
+   76  sudo mysql -u root -p
+   77  ip a
+   78  sudo mysql -u root -p
+   79  sudo ls -la /etc/mysql/
+   80  sudo vim /etc/mysql/my.cnf 
+   81  sudo service mysql restart
+   82  sudo mysql -u root -p
+   83  sudo service mysql restart
+   84  app/console doctrine:mapping:import AppBundle annotation 
+   85  app/console cache:clear
+   86  mc
+   87  ls -la
+   88  rm -rf app/cache/*
+   89  app/console doctrine:mapping:import AppBundle annotation 
+   90  composer install
+   91  app/console doctrine:mapping:import AppBundle annotation 
+   92  app/console doctrine:generate:entities AppBundle --no-backup 
+   93  history
+   94  ip a
+   95  pwd
+   96  app/console doctrine:generate:crud
+   97  app/console doctrine:generate:crud --format=yml --with-write AppBundle:Category
+   98  app/console
+   99  app/console cache:clear
+  100  ifconfig
+  101  git st
+  102  ipconfig
+  103  ip
+  104  help
+  105  ls -la
+  106  ifconfig
+  107  ls -la
+  108  cd work
+  109  ifconfig
+  110  cd ../
+  111  sudo cat  /etc/samba/smb.conf 
+  112  sudo vim  /etc/samba/smb.conf 
+  113  ifconfig
+  114  sudo vim /etc/samba/smb.conf 
+  115  git st
+  116  ls -la
+  117  ifconfig
+  118  cd work
+  119  ls -la
+  120  cd symfony-tutorial/
+  121  ls -la
+  122  cd p1/
+  123  ls -la
+  124  git st
+  125  sudo vim /etc/samba/smb.conf 
+  126  ifconfig
+  127  ping www.google.com
+  128  ip a
+  129  ifconfig
+  130  ip a
+  131  ping www.google.com
+  132  ip a
+  133  ls -la
+  134  cd work
+  135  ls -la
+  136  cd symfony-tutorial/
+  137  ls -la
+  138  cd c3
+  139  ls -la
+  140  cd ..
+  141  mkdir c4
+  142  cd c4
+  143  git clone git@github.com:skafandri/symfony-tutorial.git --branch .
+  144  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch3
+  145  ls -la
+  146  cd symfony-tutorial/
+  147  ls -la
+  148  git st
+  149  cd ../
+  150  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch3 c4
+  151  rm -rf c4/*
+  152  git clone git@github.com:skafandri/symfony-tutorial.git --branch ch3 c4
+  153  cd c4
+  154  ls -la
+  155  git st
+  156  composer install
+  157  git st
+  158  app/console doctrine:schema:update --force
+  159  mysql 
+  160  mysql -u root -pmysql
+  161  app/console | grep ass
+  162  app/console assets:install
+  163  sudo cat /etc/mysql/my.cnf
+  164  git st
+  165  git update-index --assume-unchanged .idea/
+  166  git st
+  167  git add .
+  168  git st
+  169  git commit -m 'C4 - code and modifications'
+  170  git st
+  171  git show origin
+  172  git remote show origin
+  173  git add origin help
+  174  git add help
+  175  git help
+  176  git remote add origin_bkp https://github.com/andu83/symfony.git 
+  177  git remote -v
+  178  git push origin_bkp c4
+  179  git push origin_bkp master
+  180  git push origin_bkp c4
+  181  git st
+  182  git co -b c4
+  183  git push origin_bkp c4
+  184  app/console server:run 172.24.193.51:8000
+  185  ls -la
+  186  cd work
+  187  ls -la
+  188  cd symfony-tutorial/
+  189  cd c4
+  190  ls -la
+  191  app/console | grep server
+  192  app/console
+  193  ls -la
+  194  cd app/
+  195  ls -la
+  196  app/console
+  197  cd ../
+  198  app/console
+  199  git st
+  200  composer install
+  201  app/console | grep server
+  202  ip a
+  203  app/console server:run 172.24.193.51:8000
+  204  ip a
+  205  ifconfig
+  206  ping www.google.com
+  207  ls -la
+  208  cd work
+  209  cd symfony-tutorial/
+  210  cd c5/symfony-tutorial/
+  211  ls -la
+  212  git st
+  213  composer install
+  214  app/console server:run 172.24.193.51:8000 
+  215  ip a
+  216  cd work/symfony-tutorial/c6/symfony-tutorial/
+  217  git st
+  218  composer install
+  219  git st
+  220  git remoteorigin 
+  221  git remote add origin_bkp https://github.com/andu83/symfony.git 
+  222  git co -b c6
+  223  git st
+  224  git add .
+  225  git st
+  226  git commit -m 'JsonRpc bundle c6'
+  227  git st
+  228  git push origin_bkp c6
+  229  history >> history.txt
