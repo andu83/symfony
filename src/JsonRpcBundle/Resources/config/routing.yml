@@ -1,0 +1,4 @@
+json_rpc:
+  path:     /json-rpc/{service}
+  defaults: { _controller: "JsonRpcBundle:Server:handle" }
+  methods: [POST]

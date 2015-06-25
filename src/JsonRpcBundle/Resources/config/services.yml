@@ -1,0 +1,5 @@
+services:
+  json_rpc.server:
+    class: JsonRpcBundle\Server
+    calls:
+      - [setContainer, ["@service_container"]]
