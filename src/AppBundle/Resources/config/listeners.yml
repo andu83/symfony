@@ -1,0 +1,13 @@
+services:
+    app.listener.soft_delete:
+        class: AppBundle\Event\Listener\SoftDelete
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+    app.order_listener:
+        class: AppBundle\Event\Listener\OrderListener
+        parent: app.doctrine_aware
+        calls:
+            - [setWarehouseService, ["@app.warehouse"]]
+        tags: #each tag should be on a single line, I split it here for readability
+            - {name: kernel.event_listener, event:%app.order_before_create%,method:onBeforeCreate}
+            - {name: kernel.event_listener, event: %app.order_after_create%,method:onAfterCreate}

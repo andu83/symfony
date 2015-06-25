@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 class Server extends ContainerAware
 {
     const ID = 'json_rpc.server';
+    private $allowedMethods = array();
 
     public function handle($request, $serviceId)
     {
@@ -28,9 +29,15 @@ class Server extends ContainerAware
         return new SuccessResponse($request['id'], $result);
     }
 
+    /**
+     * @param $serviceId
+     * @param $method
+     *
+     * @return bool
+     */
     private function isAllowed($serviceId, $method)
     {
-        return true;
+        return in_array(sprintf('%s->%s', $serviceId, $method), $this->allowedMethods);
     }
 
     private function resolveOptions($request)
@@ -43,4 +50,10 @@ class Server extends ContainerAware
 
         return $resolver->resolve($request);
     }
+
+    public function addAllowedMethod($serviceId, $method)
+    {
+        $this->allowedMethods[] = sprintf('%s->%s', $serviceId, $method);
+    }
+
 }

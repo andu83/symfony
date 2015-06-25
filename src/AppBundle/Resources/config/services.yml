@@ -1,18 +1,23 @@
+imports:
+  - { resource: listeners.yml }
+  - { resource: events.xml }
 services:
-    app.listener.soft_delete:
-        class: AppBundle\Event\Listener\SoftDelete
-        tags:
-            - { name: doctrine.event_listener, event: onFlush }
-    
-    app.doctrine_aware:
-        class: AppBundle\Service\AbstractDoctrineAware
-        arguments: [@doctrine, @?logger]
-        abstract: true
-        
-    app.warehouse:
-        class: AppBundle\Service\WarehouseService
-        parent: app.doctrine_aware
-        
-    app.catalog:
-        class: AppBundle\Service\CatalogService
-        parent: app.doctrine_aware
+  app.doctrine_aware:
+    class: AppBundle\Service\AbstractDoctrineAware
+    arguments: [@doctrine, @logger, @event_dispatcher]
+    abstract: true
+  app.warehouse:
+    class: AppBundle\Service\WarehouseService
+    parent: app.doctrine_aware
+    tags:
+      - {name: json_rpc.service, method: getAll}
+      - {name: json_rpc.service, method: getOne}
+  app.catalog:
+    class: AppBundle\Service\CatalogService
+    parent: app.doctrine_aware
+  app.order:
+    class: AppBundle\Service\OrderService
+    parent: app.doctrine_aware
+    tags:
+      - {name: json_rpc.service, method: createOrder}
+      - {name: json_rpc.service, method: getOne}
