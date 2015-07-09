@@ -53,3 +53,7 @@ app_category:
 app_dashboard:
     resource: "@AppBundle/Resources/config/routing/dashboard.yml"
     prefix:   /dashboard
+
+app_communication:
+    resource: "@AppBundle/Resources/config/routing/communication.yml"
+    prefix:   /communication

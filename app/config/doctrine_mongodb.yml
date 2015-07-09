@@ -1,0 +1,8 @@
+doctrine_mongodb:
+  connections:
+    default:
+      server: mongodb://localhost:27017
+      options: {}
+  document_managers:
+    default:
+      auto_mapping: true

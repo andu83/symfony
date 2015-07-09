@@ -23,6 +23,10 @@
         type="constant">AppBundle\Event\Order\OrderEvent::DELIVERY_START</parameter>
         <parameter key="app.order_delivery_end" 
         type="constant">AppBundle\Event\Order\OrderEvent::DELIVERY_END</parameter>
+        <parameter key="app.email.before_send" type="constant">AppBundle\Event\Communication\Email\EmailEvent::BEFORE_SEND</parameter>
+        <parameter key="app.email.error_temporary" type="constant">AppBundle\Event\Communication\Email\EmailEvent::ERROR_TEMPORARY</parameter>
+        <parameter key="app.email.error_permanent" type="constant">AppBundle\Event\Communication\Email\EmailEvent::ERROR_PERMANENT</parameter>
+        <parameter key="app.email.sent" type="constant">AppBundle\Event\Communication\Email\EmailEvent::SENT</parameter>
     </parameters>
 </container>
 

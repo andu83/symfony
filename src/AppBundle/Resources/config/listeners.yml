@@ -23,3 +23,11 @@ services:
             - {name: kernel.event_listener,event: %app.order_invoice_generated%,method:onInvoiceGenerated}
             - {name: kernel.event_listener,event: %app.order_delivery_start%,method:onDeliveryStart}
             - {name: kernel.event_listener,event: %app.order_delivery_end%,method:onDeliveryEnd}
+    app.email_communication_listener:
+        class: AppBundle\Event\Listener\EmailCommunicationListener
+        arguments: [@doctrine_mongodb]
+        tags:
+            - {name: kernel.event_listener,event: %app.email.before_send%,method:onBeforeSend}
+            - {name: kernel.event_listener,event: %app.email.error_temporary%,method:onTemporaryError}
+            - {name: kernel.event_listener,event: %app.email.error_permanent%,method:onPermanentError}
+            - {name: kernel.event_listener,event: %app.email.sent%,method:onEmailSent}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>            {% block title %}                {% if title is defined %}                    {{ title|trans }}                {% endif %}            {% endblock %}        </title>
+</head>
+<body>        {% block body %}
+    <div id="container" style="width: 600px">
+        <div id="header">                    {% block header %}
+                <h1> {{ 'company_name'|trans|capitalize }}</h1>                    {% endblock %}                </div>
+        <div id="content">                    {% block content %}                    {% endblock %}                </div>
+        <div id="footer" style="font-size: 10px">                    {% block footer %}
+                <hr/>                        {{ 'copyright'|trans|capitalize }} {{ "now"|date("Y") }}                        {{ 'company_name'|trans }}                    {% endblock %}
+        </div>
+    </div>        {% endblock %}    </body>
+</html>

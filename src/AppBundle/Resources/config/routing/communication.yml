@@ -1,0 +1,3 @@
+communication_external_provider:
+    path:     /external_provider
+    defaults: { _controller: "AppBundle:ExternalProvider:index" }

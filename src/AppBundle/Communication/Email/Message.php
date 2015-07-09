@@ -10,6 +10,7 @@ class Message
     private $message;
     private $additionalHeaders;
     private $additionalParameters;
+    private $from;
 
     public function getTo()
     {
@@ -39,31 +40,47 @@ class Message
     public function setTo($to)
     {
         $this->to = $to;
+
         return $this;
     }
 
     public function setSubject($subject)
     {
         $this->subject = $subject;
+
         return $this;
     }
 
     public function setMessage($message)
     {
         $this->message = $message;
+
         return $this;
     }
 
     public function setAdditionalHeaders($additionalHeaders)
     {
         $this->additionalHeaders = $additionalHeaders;
+
         return $this;
     }
 
     public function setAdditionalParameters($additionalParameters)
     {
         $this->additionalParameters = $additionalParameters;
+
         return $this;
     }
 
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    public function setFrom($from)
+    {
+        $this->from = $from;
+
+        return $this;
+    }
 }

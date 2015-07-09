@@ -27,10 +27,11 @@ services:
         class: AppBundle\Service\Communication\EmailService
         public: false
         calls:
-            - ["addProvider", ["@=service('kernel').getEnvironment() === 'dev' ? service('app.provider_email_dev') : service('app.provider_email_php')"]]    
+            #- ["addProvider", ["@=service('kernel').getEnvironment() === 'dev' ? service('app.provider_email_dev') : service('app.provider_email_php')"]]
+            - ["addProvider", ["@app.provider_email_external"]]
     app.communication:
         class: AppBundle\Service\Communication\CommunicationService
-        arguments: [@app.email]        
+        arguments: [@app.email, @templating, @translator, @event_dispatcher]
     event_dispatcher:
         class: AppBundle\Event\EventDispatcher
         arguments: [@service_container]        

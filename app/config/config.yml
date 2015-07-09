@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: doctrine.yml }
     - { resource: dashboard.yml }
+    - { resource: doctrine_mongodb.yml }
 
 framework:
     #esi:             ~

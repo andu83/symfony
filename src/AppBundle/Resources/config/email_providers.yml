@@ -4,3 +4,7 @@ services:
         
     app.provider_email_dev:
         class: AppBundle\Communication\Email\DevProvider
+
+    app.provider_email_external:
+        class: AppBundle\Communication\Email\ExternalProvider
+        arguments: [%communication.external_provider_host%]

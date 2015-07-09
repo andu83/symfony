@@ -1,0 +1,4 @@
+confirmation:
+  text: Thank you %customerName%, your order number %orderNumber% is being processed.
+  subject: Order confirmation
+  from: orders@site.com
